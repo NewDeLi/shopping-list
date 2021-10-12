@@ -1,8 +1,22 @@
 
+import styled from "styled-components";
+
 //create call back function onListItemUpdate to handle click event on span-tag/shoppingitem
-export function ShoppingItem({ shoppingItem, onListItemUpdate }) {
+export function ShoppingItem({ shoppingItem, onListItemUpdate, isSelected }) {
+
   return ( 
-      <span className="list-item" onClick={() => onListItemUpdate(shoppingItem)}>
+    <ListItem isSelected={isSelected} onClick={() => onListItemUpdate(shoppingItem)}>
       {shoppingItem.name}
-    </span>
-  )};
+    </ListItem>
+  )
+};
+
+//styled components
+const ListItem = styled.span`
+padding: .3rem;
+margin: .5rem;
+background-color: ${({ isSelected }) => (isSelected ? "lightgray" : "hotpink")};
+`
+
+
+ 

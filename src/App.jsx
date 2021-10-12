@@ -1,8 +1,9 @@
 
-import './App.css'
 import { ShoppingItem } from './components/ShoppingItem'
 import { useEffect, useState } from 'react'
 import { useLocalStorageState } from './utils/localStorage';
+import styled from 'styled-components';
+
 
 
 export function App() {
@@ -44,21 +45,25 @@ export function App() {
     );
     setShoppingList(remainingShopping);
   }
+
+
   return (
     <div className="App">
       <h1>DeLi Einkaufsliste</h1>
       <h2>Backlog</h2>
-     <section className="backlog">
+     <Backlog>
         {shoppingBacklog.map(item => (
-            <ShoppingItem 
+          <ShoppingItem
+            isSelected={false}
             key={item.id} shoppingItem={item}
             onListItemUpdate={moveToList} />
         ))}
-      </section>
+      </Backlog>
       <h2>Einkaufsliste</h2>
       <section className="shopping-list">
         {shoppingList.map(item=> (
           <ShoppingItem
+            isSelected={true}
             key={item.id}
             shoppingItem={item}
             onListItemUpdate={moveItemBacklog}
@@ -68,4 +73,12 @@ export function App() {
     </div>
   )
 };
+  //style components
+
+const Backlog = styled.section`
+display: flex;
+flex-wrap: wrap;
+`
+
+
 
