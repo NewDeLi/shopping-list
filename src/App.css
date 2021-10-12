@@ -1,4 +1,11 @@
-.App {
-  text-align: center;
+
+.backlog{
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.App span{
+  padding: .3rem;
+  margin: .5rem;
+  background-color: lightgray;
+}
